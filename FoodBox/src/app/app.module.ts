@@ -9,9 +9,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { AdduserComponent } from './admin/users/adduser/adduser.component';
 import { FormsModule } from '@angular/forms';
 import { ViewuserComponent } from './admin/users/viewuser/viewuser.component';
+import { FoodsComponent } from './admin/foods/foods.component';
+import { AddfoodComponent } from './admin/foods/addfood/addfood.component';
 
 @NgModule({
-  declarations: [AppComponent, MenuComponent, UsersComponent, AdduserComponent, ViewuserComponent],
+  declarations: [AppComponent, MenuComponent, UsersComponent, AdduserComponent, ViewuserComponent, FoodsComponent, AddfoodComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],

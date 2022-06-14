@@ -1,0 +1,33 @@
+<h1>Foods Admin</h1>
+<a class="btn btn-primary mb-3" (click)="addFood()">Add New Food</a>
+<div class="container row">
+  <div class="col-md-6">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Food Name</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let food of foods">
+          <td>{{ food.id }}</td>
+          <td>{{ food.name }}</td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="setFood(food.id)"
+            >
+              Show Details
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-6">
+    <app-addfood *ngIf="action === 'add'" [food]="selectedFood"></app-addfood>
+  </div>
+</div>
