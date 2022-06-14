@@ -22,8 +22,8 @@ public class User {
 	@Column(name = "password")
 	private String password;
 	
-	@Column(name="usertype")
-	private String userType;
+	@Column(name="type")
+	private String type;
 	
 	
 	public Long getId() {
@@ -44,10 +44,14 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getUserType() {
-		return userType;
+	public String getType() {
+		return type;
 	}
-	public void setUserType(String userType) {
-		this.userType = userType;
+	public void setType(String userType) {
+		this.type = userType;
+	}
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", password=" + password + ", usertype=" + type + "]";
 	}
 }
