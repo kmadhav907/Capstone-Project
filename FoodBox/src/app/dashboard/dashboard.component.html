@@ -1,0 +1,121 @@
+<div class="container row">
+  <div class="col-md-4">
+    <h3>Welcome to FoodBox</h3>
+  </div>
+  <div class="col-md-12">
+    <ul class="nav navbar-nav float-right">
+      <li class="dropdown">
+        <br />
+        <button
+          class="btn btn-primary btn-lg"
+          data-toggle="dropdown"
+          role="button"
+          aria-expanded="false"
+          [disabled]="cartFoods.length === 0"
+        >
+          <span class="caret">Foods Added In Cart: </span>
+          <span class="caret">{{ cartFoods.length }}</span>
+        </button>
+        <ul
+          class="dropdown-menu dropdown-cart"
+          role="menu"
+          *ngIf="cartFoods.length > 0"
+        >
+          <li
+            *ngFor="let item of cartFoods"
+            style="
+              width: 250px;
+              display: flex;
+              align-items: flex-start;
+              justify-content: flex-start;
+              margin-left: 10px;
+            "
+          >
+            <div
+              style="
+                display: flex;
+                align-items: flex-start;
+                justify-content: flex-start;
+                width: 100%;
+              "
+            >
+              <div style="margin-right: 10px; font-size: 18x">
+                {{ item.name }}
+              </div>
+              <div style="font-size: 18px; font-weight: bolder">
+                &#8377;{{ item.price }}
+              </div>
+            </div>
+          </li>
+          <hr />
+          <li>
+            <a
+              class="btn btn-small btn-success"
+              role="button"
+              (click)="goToCart()"
+              >View Cart</a
+            >
+          </li>
+          <br />
+          <li *ngIf="cartFoods.length > 0">
+            <a
+              class="btn btn-small btn-warning"
+              role="button"
+              (click)="emptyCart()"
+              >Empty Cart</a
+            >
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<hr />
+<hr />
+<div class="container row">
+  <div class="col-md-4" *ngFor="let food of foods; let i = index">
+    <div
+      class="card card-flex"
+      style="
+        padding: 10px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+        border: 1px solid black;
+        -webkit-box-shadow: 10px 10px 37px -3px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 10px 10px 37px -3px rgba(0, 0, 0, 0.75);
+        box-shadow: 10px 10px 37px -3px rgba(0, 0, 0, 0.75);
+        height: 100%;
+        width: 100%;
+      "
+    >
+      <img
+        class="custom-image-style"
+        img
+        src="{{ food.retrievedImage }}"
+        height="100%"
+        width="100%"
+      />
+      <div style="margin-left: 10px">
+        <div>
+          <p>
+            <strong>{{ food.name }}: &#8377;{{ food.price }}</strong>
+          </p>
+          <p>{{ food.description }}</p>
+        </div>
+        <div class="offset-md-4 col-md-4">
+          <button
+            class="btn btn-primary btn-sm"
+            (click)="addToCart(food.id)"
+            [disabled]="food.isAdded === true"
+            style="width: fit-content; padding: 10px; white-space: nowrap"
+          >
+            Add To Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

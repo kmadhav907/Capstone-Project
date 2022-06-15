@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClientService } from '../../../service/http-client.service';
 import { Food } from '../foods';
@@ -12,6 +12,9 @@ import { Food } from '../foods';
 export class AddfoodComponent implements OnInit {
   @Input()
   food: Food;
+
+  @Output()
+  foodAddedEvent = new EventEmitter();
   private selectedFile;
   imgURL: any;
   constructor(
@@ -33,24 +36,32 @@ export class AddfoodComponent implements OnInit {
   }
 
   saveFood() {
-    const uploadData = new FormData();
-    uploadData.append('imageFile', this.selectedFile, this.selectedFile.name);
-    this.selectedFile.imageName = this.selectedFile.name;
+    if (this.food.id == null) {
+      const uploadData = new FormData();
+      uploadData.append('imageFile', this.selectedFile, this.selectedFile.name);
+      this.selectedFile.imageName = this.selectedFile.name;
 
-    this.httpClient
-      .post('http://localhost:8082/foods/upload', uploadData, {
-        observe: 'response',
-      })
-      .subscribe((response) => {
-        if (response.status === 200) {
-          console.log('Food value:' + this.food);
-          this.httpClientService.addFood(this.food).subscribe((food) => {
-            this.router.navigate(['admin', 'foods']);
-          });
-          console.log('Image uploaded successfully');
-        } else {
-          console.log('Image not uploaded successfully');
-        }
+      this.httpClient
+        .post('http://localhost:8082/foods/upload', uploadData, {
+          observe: 'response',
+        })
+        .subscribe((response) => {
+          if (response.status === 200) {
+            console.log('Food value:' + this.food);
+            this.httpClientService.addFood(this.food).subscribe((food) => {
+              this.foodAddedEvent.emit();
+              this.router.navigate(['admin', 'foods']);
+            });
+            console.log('Image uploaded successfully');
+          } else {
+            console.log('Image not uploaded successfully');
+          }
+        });
+    } else {
+      this.httpClientService.updateFood(this.food).subscribe((book) => {
+        this.foodAddedEvent.emit();
+        this.router.navigate(['admin', 'foods']);
       });
+    }
   }
 }

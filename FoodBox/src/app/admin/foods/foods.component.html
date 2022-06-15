@@ -18,7 +18,7 @@
             <button
               type="button"
               class="btn btn-primary"
-              (click)="setFood(food.id)"
+              (click)="viewFood(food.id)"
             >
               Show Details
             </button>
@@ -28,6 +28,15 @@
     </table>
   </div>
   <div class="col-md-6">
-    <app-addfood *ngIf="action === 'add'" [food]="selectedFood"></app-addfood>
+    <app-addfood
+      *ngIf="action === 'edit' || action === 'add'"
+      [food]="selectedFood"
+      (foodAddedEvent)="refreshData()"
+    ></app-addfood>
+    <app-viewfood
+      *ngIf="action === 'view'"
+      [food]="selectedFood"
+      (foodDeletedEvent)="refreshData()"
+    ></app-viewfood>
   </div>
 </div>

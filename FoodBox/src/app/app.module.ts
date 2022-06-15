@@ -11,9 +11,13 @@ import { FormsModule } from '@angular/forms';
 import { ViewuserComponent } from './admin/users/viewuser/viewuser.component';
 import { FoodsComponent } from './admin/foods/foods.component';
 import { AddfoodComponent } from './admin/foods/addfood/addfood.component';
+import { ViewfoodComponent } from './admin/foods/viewfood/viewfood.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { CartComponent } from './cart/cart.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
-  declarations: [AppComponent, MenuComponent, UsersComponent, AdduserComponent, ViewuserComponent, FoodsComponent, AddfoodComponent],
+  declarations: [AppComponent, MenuComponent, UsersComponent, AdduserComponent, ViewuserComponent, FoodsComponent, AddfoodComponent, ViewfoodComponent, DashboardComponent, CartComponent, CheckoutComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],

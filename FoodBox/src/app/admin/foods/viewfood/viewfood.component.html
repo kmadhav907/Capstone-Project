@@ -1,0 +1,28 @@
+<div>
+  <h1>Food Details</h1>
+
+  <table>
+    <tr>
+      <td>Food Id</td>
+      <td>{{ food.id }}</td>
+    </tr>
+    <tr>
+      <td>Food Name</td>
+      <td>{{ food.name }}</td>
+    </tr>
+    <tr>
+      <td>Description</td>
+      <td>{{ food.description }}</td>
+    </tr>
+    <tr>
+      <td>Food Price</td>
+      <td>{{ food.price }}</td>
+    </tr>
+  </table>
+  <br />
+  <img src="{{ food.retrievedImage }}" height="200" width="200" />
+  <br /><br />
+
+  <a class="btn btn-small btn-warning margin-5" (click)="editFood()">Edit</a>
+  <a class="btn btn-small btn-danger margin-5" (click)="deleteFood()">Delete</a>
+</div>

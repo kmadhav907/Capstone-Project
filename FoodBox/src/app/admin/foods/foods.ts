@@ -4,4 +4,6 @@ export class Food {
   description: string;
   price: number;
   picByte: string;
+  retrievedImage: string;
+  isAdded: boolean;
 }
