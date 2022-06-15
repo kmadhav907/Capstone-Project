@@ -1,0 +1,18 @@
+<div>
+  <h1>Order Details</h1>
+  <table style="margin: 5px">
+    <tr>
+      <td>Order Id</td>
+      <td>Order Email</td>
+      <td>Order Name</td>
+      <td>Order Amount</td>
+    </tr>
+    <tr *ngFor="let order of orders">
+      <td>{{ order.id }}</td>
+      <td>{{ order.email }}</td>
+      <td>{{ order.name }}</td>
+      <td>{{ order.amountpayed }}</td>
+    </tr>
+  </table>
+  <br />
+</div>

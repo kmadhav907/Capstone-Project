@@ -12,12 +12,19 @@ export class DashboardComponent implements OnInit {
   foods: Array<Food>;
   foodsRecieved: Array<Food>;
   cartFoods: any;
+  loginButtonText: string;
   constructor(
     private router: Router,
     private httpClientService: HttpClientService
   ) {}
 
   ngOnInit(): void {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user != null) {
+      this.loginButtonText = 'logout';
+    } else {
+      this.loginButtonText = 'login';
+    }
     this.httpClientService
       .getFoods()
       .subscribe((response) => this.handleSuccessfulResponse(response));
@@ -70,5 +77,13 @@ export class DashboardComponent implements OnInit {
   emptyCart() {
     this.cartFoods = [];
     localStorage.removeItem('cart');
+  }
+  loginScreen() {
+    if (this.loginButtonText === 'login') this.router.navigate(['/login']);
+    else {
+      localStorage.removeItem('user');
+      console.log('user removed successfully');
+      this.loginButtonText = 'login';
+    }
   }
 }

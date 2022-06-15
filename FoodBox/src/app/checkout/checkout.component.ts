@@ -22,6 +22,10 @@ export class CheckoutComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user == null) {
+      this.router.navigate(['/login']);
+    }
     let data = localStorage.getItem('cart');
     this.cartItems = JSON.parse(data);
     if (this.cartItems.length === 0) {

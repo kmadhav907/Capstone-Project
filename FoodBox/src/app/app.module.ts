@@ -15,9 +15,12 @@ import { ViewfoodComponent } from './admin/foods/viewfood/viewfood.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { OrdersComponent } from './orders/orders.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
-  declarations: [AppComponent, MenuComponent, UsersComponent, AdduserComponent, ViewuserComponent, FoodsComponent, AddfoodComponent, ViewfoodComponent, DashboardComponent, CartComponent, CheckoutComponent],
+  declarations: [AppComponent, MenuComponent, UsersComponent, AdduserComponent, ViewuserComponent, FoodsComponent, AddfoodComponent, ViewfoodComponent, DashboardComponent, CartComponent, CheckoutComponent, OrdersComponent, LoginComponent, RegisterComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],

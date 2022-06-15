@@ -7,7 +7,7 @@
       <li class="dropdown">
         <br />
         <button
-          class="btn btn-primary btn-lg"
+          class="btn btn-primary"
           data-toggle="dropdown"
           role="button"
           aria-expanded="false"
@@ -15,6 +15,15 @@
         >
           <span class="caret">Foods Added In Cart: </span>
           <span class="caret">{{ cartFoods.length }}</span>
+        </button>
+        <button
+          class="btn btn-primary"
+          role="button"
+          aria-expanded="false"
+          (click)="loginScreen()"
+          style="margin-left: 10px"
+        >
+          {{ loginButtonText }}
         </button>
         <ul
           class="dropdown-menu dropdown-cart"

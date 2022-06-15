@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.application.foodbox.dto.CredentialDTO;
+import com.application.foodbox.dto.LoginResponseDTO;
 import com.application.foodbox.model.User;
 import com.application.foodbox.repository.UserRepository;
 
@@ -45,5 +47,33 @@ public class UserController {
 		else {
 			return null;
 		}
+	}
+	@PostMapping(path="/login")
+	public LoginResponseDTO login(@RequestBody CredentialDTO credentials ) {
+		String password = credentials.getPassword();
+		Optional<User> user = userRepository.findUserByName(credentials.getUserName());
+		if(user.isPresent()) {
+			User authUser = user.get();
+			if(authUser.getPassword().equals(password)) {
+				LoginResponseDTO response = new LoginResponseDTO();
+				response.setUser(authUser);
+				response.setResponse("success");
+				return response;
+			}
+			else {
+				LoginResponseDTO response = new LoginResponseDTO();
+				response.setUser(null);
+				response.setResponse("incorrectCredentials");
+				return response;
+			}
+		}
+		else {
+			LoginResponseDTO response = new LoginResponseDTO();
+			response.setUser(null);
+			response.setResponse("NoUserFound");
+			return response;
+		}
+	
+		
 	}
 }

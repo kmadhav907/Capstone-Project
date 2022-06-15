@@ -47,4 +47,15 @@ export class HttpClientService {
       order
     );
   }
+  getOrders() {
+    return this.httpClient.get<Array<Order>>(
+      'http://localhost:8082/orders/get'
+    );
+  }
+  signIn(userName: string, password: string) {
+    return this.httpClient.post<any>('http://localhost:8082/users/login', {
+      userName,
+      password,
+    });
+  }
 }

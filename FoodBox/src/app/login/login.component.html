@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <!-- Pills navs -->
+
+    <!-- Pills content -->
+    <div class="tab-content">
+      <div
+        class="tab-pane fade show active"
+        id="pills-login"
+        role="tabpanel"
+        aria-labelledby="tab-login"
+      >
+        <form>
+          <h4 class="text-center">Sign In</h4>
+
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="userName"
+              name="username"
+            />
+            <label class="form-label">Username</label>
+          </div>
+
+          <!-- Password input -->
+          <div class="form-outline mb-4">
+            <input
+              type="password"
+              class="form-control"
+              [(ngModel)]="password"
+              name="password"
+            />
+            <label class="form-label">Password</label>
+          </div>
+
+          <!-- 2 column grid layout -->
+
+          <!-- Submit button -->
+          <button
+            type="submit"
+            class="btn btn-primary btn-block mb-4"
+            (click)="signIn()"
+          >
+            Sign in
+          </button>
+
+          <!-- Register buttons -->
+          <div class="text-center">
+            <p>Not a member? <a href="/register">Register</a></p>
+          </div>
+        </form>
+      </div>
+      <!-- Pills content -->
+    </div>
+  </div>
+</div>

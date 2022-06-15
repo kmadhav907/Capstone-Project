@@ -7,4 +7,5 @@ import com.application.foodbox.model.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 	Optional<User> findUserById(long id);
+	Optional<User> findUserByName(String name);
 }
